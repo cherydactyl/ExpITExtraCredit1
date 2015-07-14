@@ -45,7 +45,7 @@ namespace ExpITExtraCredit1
             Console.WriteLine("for n=" + n + " is " + hSum + " when calculated right to left.");
             Console.WriteLine();    //whitespace
             Console.WriteLine("Although there appears to be no difference for calculation\nleft-to-right vs right-to-left for n=50000,");
-            Console.WriteLine("There does appear to be a difference for n=500000.");
+            Console.WriteLine("there does appear to be a difference for n=500000.");
             Console.WriteLine("Such differences are attirbutable to overflow errors in the");
             Console.WriteLine("hamonic sum tracking variable, which manifest as rounding errors.");
         }
@@ -82,7 +82,7 @@ namespace ExpITExtraCredit1
             }
             Console.WriteLine("The sum of even Fibbonacci numbers valued under 4 million is " + partialSum);
 
-            //Also I noticed this was a projecteuler.net archive problem #2, and submitted the answer there
+            //I noticed this was a projecteuler.net archive problem (#2), and submitted the answer there
             //It was correct!
             //Additionally, I earned the "babysteps" award when I entered the solution.  Much appreciated!
         }
@@ -106,6 +106,7 @@ namespace ExpITExtraCredit1
 
         static void Main(string[] args)
         {
+            //Running in Circles (Loops)
             //Exercise 1: Harmonic Sum
             harmonicSum();      //solution in separate function, above
             waitForUser();
