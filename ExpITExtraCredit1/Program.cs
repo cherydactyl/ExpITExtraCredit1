@@ -8,7 +8,6 @@ namespace ExpITExtraCredit1
 {
     class Program
     {
-
         static void waitForUser()
         {
             //generic helper function to wait for the user to be ready to continue;
@@ -33,8 +32,8 @@ namespace ExpITExtraCredit1
             {
                 hSum += Math.Pow(i, -1);
             }
-            Console.WriteLine("The harmonic sum 1 + 1/2 + 1/3 + 1/4 + .... + 1/n, \nfor n=" + n + " is " + hSum
-                + " when calculated left to right.");
+            Console.WriteLine("The harmonic sum 1 + 1/2 + 1/3 + 1/4 + .... + 1/n,");
+            Console.WriteLine("for n=" + n + " is " + hSum + " when calculated left to right.");
 
             hSum = 0;   //reset harmonic sum keeper variable
             //step through intergers from 50000 to 1 and add that number ^ -1 to the sum
@@ -42,13 +41,13 @@ namespace ExpITExtraCredit1
             {
                 hSum += Math.Pow(i, -1);
             }
-            Console.WriteLine("The harmonic sum 1 + 1/2 + 1/3 + 1/4 + .... + 1/n, \nfor n=" + n + " is " + hSum
-                + " when calculated right to left.");
+            Console.WriteLine("The harmonic sum 1 + 1/2 + 1/3 + 1/4 + .... + 1/n,");
+            Console.WriteLine("for n=" + n + " is " + hSum + " when calculated right to left.");
             Console.WriteLine();    //whitespace
             Console.WriteLine("Although there appears to be no difference for calculation\nleft-to-right vs right-to-left for n=50000,");
             Console.WriteLine("There does appear to be a difference for n=500000.");
             Console.WriteLine("Such differences are attirbutable to overflow errors in the");
-            Console.WriteLine("\thamonic sum tracking variable, which manifest as rounding errors.");
+            Console.WriteLine("hamonic sum tracking variable, which manifest as rounding errors.");
         }
 
         static void sumEvenFib ()
