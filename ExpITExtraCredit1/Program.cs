@@ -88,6 +88,23 @@ namespace ExpITExtraCredit1
             //Additionally, I earned the "babysteps" award when I entered the solution.  Much appreciated!
         }
 
+        static void multipicationTable()
+        {
+            //iterate through one operand
+            for (int i = 1; i < 10; i++)
+            {
+                //iterate through the other operand
+                for (int j = 1; j < 10; j++)
+                {
+                    //write the product, followed by a space
+                    //last trailing space won't matter
+                    Console.Write((i * j) + " ");
+                }
+                //end of the table row
+                Console.WriteLine();
+            }
+        }
+
         static void Main(string[] args)
         {
             //Exercise 1: Harmonic Sum
@@ -98,9 +115,9 @@ namespace ExpITExtraCredit1
             sumEvenFib();       //solution in separate function, above
             waitForUser();
 
-
-
             //Exercise 3: Multiplication Tables
+            multipicationTable();
+            waitForUser();
 
         }
 
