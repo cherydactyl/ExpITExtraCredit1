@@ -7,14 +7,36 @@ using System.Threading.Tasks;
 namespace ExpITExtraCredit1
 {
     enum cardRank { Ace = 1, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King}   //card values
-    enum cardSuit { Clubs, Hearts, Diamonds, Spades}    //suits from lowest to highest, Bridge order
+    enum cardSuit { Clubs, Diamonds, Hearts, Spades }    //suits from lowest to highest, Bridge order
 
     class Card
     {
         int rank { get; set; }   //1 = Ace, ... 11 = Jack, 12 = Queen, 13 = King, as per enum above
         int suit { get; set; }   //as per enum above
 
-        Card(int r, int s)  //constructor by rank (1 to 13) and suit (0 to 3), as per enums above
+        public Card(int serial)    //constructor by serial number (1...52); serial number = (suit * 13) + rank
+        {
+            //note that % is NOT MODULO in C#, it's remainder!! Therefore handling negative numbers is interesting
+            while (serial < 0)      // corrects for serial numbers less than 0
+            {
+                serial += 52;
+            }
+            serial = serial % 52;    //force serial into range (actually 0 to 51, but a 0 is treated as if it is 52)
+            //remainder 13 to find rank, correcting 0's to 13's
+            rank = (serial % 13);
+            if (rank == 0)
+            {
+                rank = 13;
+                if (serial == 0)
+                {
+                    //special case for King of Spades
+                    serial = 52;
+                }
+            }
+            //subtract one and then apply integer division by 13 to find suit, eg (52 - 1)/13 -> 3: Spades
+            suit = (serial - 1) / 13;
+        }
+        public Card(int r, int s)  //constructor by rank (1 to 13) and suit (0 to 3), as per enums above
         {
             //note that % is NOT MODULO in C#, it's remainder!! Therefore handling negative numbers is interesting
 
@@ -35,26 +57,10 @@ namespace ExpITExtraCredit1
             {
                 s += 4;
             }
-            s = rank % 4;   //corrects for suit numbers higher than 3
+            s = s % 4;   //corrects for suit numbers higher than 3
             suit = s;
         }
-        Card(int serial)    //constructor by serial number (1...52); serial number = (suit * 13) + rank
-        {
-            //note that % is NOT MODULO in C#, it's remainder!! Therefore handling negative numbers is interesting
-            while (serial < 0)      // corrects for serial numbers less than 0
-            {
-                serial += 52;
-            }
-            serial = serial % 52;    //force serial into range (actually 0 to 51, but a 0 is treated as if it is 52)
-            //remainder 13 to find rank, correcting 0's to 13's
-            rank = (serial % 13);
-            if (rank == 0)
-            {
-                rank = 13;
-            }
-            //integer division by 13 to find suit
-            suit = (serial % 52) / 13;    
-        }
+        
         public string getRankName()
         {
             switch (rank)
@@ -91,21 +97,21 @@ namespace ExpITExtraCredit1
         }
         public string getSuitName()
         {
-            switch (rank)
+            switch (suit)
             {
                 case 0:
-                    return "Ace";
+                    return "Clubs";
                 case 1:
-                    return "Two";
+                    return "Diamonds";
                 case 2:
-                    return "Three";
+                    return "Hearts";
                 case 3:
-                    return "Four";
+                    return "Spades";
                 default:
                     return "Something isn't right.";
             }
         }
-        public int getCardSerial()
+        public int getSerial()
         {
             return (suit * 4) + rank;
         }
@@ -121,6 +127,6 @@ namespace ExpITExtraCredit1
     //-> get point amounts for cards, e.g., penalty points for left-in-hand as in some games, e.g. rummies, 
         //crazy-8s/Uno-like, etc.
     //-> various kinds of comparison, e.g. create comparison method for War or simple case (single cards)
-        //for Poker, or trick taking games like Bridge (requires trump suit as argument)
+        //for Poker, or trick taking games like Bridge (possibly requires trump suit as argument?)
     }
 }

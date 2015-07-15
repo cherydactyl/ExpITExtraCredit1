@@ -109,11 +109,29 @@ namespace ExpITExtraCredit1
             //Once a card is dealt then it can't be used again.
 
             //create a new deck (instance of class Deck)
+            Deck myDeck = new Deck();
+            Console.WriteLine("Original order of myDeck:");
+            Console.WriteLine(myDeck.ToString());
+            Console.WriteLine();    //Whitespace
 
             //shuffle it
+            myDeck.shuffle();
+            Console.WriteLine("Order of myDeck after shuffle:");
+            Console.WriteLine(myDeck.ToString());
+            Console.WriteLine();    //Whitespace
 
             //create a player hand, dealing off the deck
+            List<Card> hand = myDeck.dealHand(5);   //five is a traditional hand size for Poker
 
+            Console.WriteLine("myDeck after dealing:");
+            Console.WriteLine(myDeck.ToString());
+            Console.WriteLine();    //Whitespace
+
+            Console.WriteLine("And the hand dealt contains:");
+            foreach (Card c in hand)
+            {
+                Console.WriteLine(c.ToString());
+            }
         }
 
 
@@ -132,10 +150,10 @@ namespace ExpITExtraCredit1
             multipicationTable();
             waitForUser();
 
-
             //Arrays, Lists, and Dictionaries, Oh My!
             //Exercise 1: Shuffle Cards
             shuffleAndDeal();
+            waitForUser();
         }        
     }
 }
