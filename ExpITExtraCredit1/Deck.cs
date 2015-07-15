@@ -10,6 +10,8 @@ namespace ExpITExtraCredit1
     {
         List<Card> cardsInDeck;
 
+        Random rnd = new Random();
+
         public Deck()
         {
             cardsInDeck = new List<Card>();
@@ -29,8 +31,8 @@ namespace ExpITExtraCredit1
             {
                 return;
             }
-            //since it is traditional to shuffle a deck 7 times, we will move a random card 7*(current deck size) times
-            for (int i = cardsInDeck.Count ; i > 0 ; i--)   //counting down because it's fun
+            //It is traditional to shuffle a deck 7 times, but we will move a random card (7^2)*(current deck size) times
+            for (int i = 49*cardsInDeck.Count ; i > 0 ; i--)   //counting down because it's fun
             {
                 cardsInDeck.Add(dealOneRandom());
             }
@@ -41,9 +43,7 @@ namespace ExpITExtraCredit1
             {
                 return null;
             }
-            Random rnd = new Random();
             int randomIndex = rnd.Next(0, cardsInDeck.Count);
-            Console.WriteLine("|| index " + randomIndex);
             Card cardToDeal = cardsInDeck[randomIndex];
             cardsInDeck.RemoveAt(randomIndex);
             return cardToDeal;
