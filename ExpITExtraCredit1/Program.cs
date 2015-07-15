@@ -49,7 +49,6 @@ namespace ExpITExtraCredit1
             Console.WriteLine("Such differences are attirbutable to overflow errors in the");
             Console.WriteLine("hamonic sum tracking variable, which manifest as rounding errors.");
         }
-
         static void sumEvenFib ()
         {
             //Exercise 2: Fibbonacci Sequence
@@ -103,6 +102,20 @@ namespace ExpITExtraCredit1
                 Console.WriteLine();
             }
         }
+        static void shuffleAndDeal()
+        {
+            //Exercise 1: Shuffle Cards
+            //Write a program to create a standard 52 card deck and then deal a random hand to a player.
+            //Once a card is dealt then it can't be used again.
+
+            //create a new deck (instance of class Deck)
+
+            //shuffle it
+
+            //create a player hand, dealing off the deck
+
+        }
+
 
         static void Main(string[] args)
         {
@@ -119,8 +132,10 @@ namespace ExpITExtraCredit1
             multipicationTable();
             waitForUser();
 
-        }
 
-        
+            //Arrays, Lists, and Dictionaries, Oh My!
+            //Exercise 1: Shuffle Cards
+            shuffleAndDeal();
+        }        
     }
 }
