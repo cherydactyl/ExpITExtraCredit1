@@ -133,6 +133,47 @@ namespace ExpITExtraCredit1
                 Console.WriteLine(c.ToString());
             }
         }
+        static void ShuffleAndDeal4Hands()
+        {
+            //Objectionable Objects, Exercise 1: Card Shuffle duex
+            //Rewrite your code for the card shuffle to deal a random hand to 4 players.
+            //Use objects to represent each player's hand.
+
+            //create a new deck (instance of class Deck), and shuffle it
+            Deck myDeck = new Deck();
+            myDeck.shuffle();
+
+            //create a list of hands and populate with new empty hands to represent the four players' hands
+            List<HandOfCards> playerHands = new List<HandOfCards>();
+            for (int i = 0; i < 4; i++)
+            {
+                playerHands.Add(new HandOfCards(5));    //e.g.poker hands have five cards , so make limit 5
+            }
+            //Deal cards to each of the hands in the list of hands
+            bool allHandsFull = false;
+            while (!allHandsFull)       //careful!  if the hands had no hand limit, this would be an infinite loop!
+            {
+                foreach (HandOfCards h in playerHands)
+                {
+                    h.beDealt(myDeck.dealOne());
+                    allHandsFull = allHandsFull && h.isFull();
+                }
+            }
+
+            //display hands one by one, then show the deck state
+            Console.WriteLine("Hands after dealing:");
+            foreach (HandOfCards h in playerHands)
+            {
+                Console.WriteLine("hand:");
+                Console.WriteLine(h.ToString());
+            }
+            Console.WriteLine();    //Whitespace
+            Console.WriteLine("myDeck after dealing:");
+            Console.WriteLine(myDeck.ToString());
+            Console.WriteLine();    //Whitespace
+        }
+
+
 
 
         static void Main(string[] args)
@@ -153,6 +194,15 @@ namespace ExpITExtraCredit1
             //Arrays, Lists, and Dictionaries, Oh My!
             //Exercise 1: Shuffle Cards
             shuffleAndDeal();
+            waitForUser();
+
+            //Exercise 2: To-Do List
+
+            waitForUser();
+
+            //Objectionable Objects
+            //Exercise 1: Card Shuffle duex
+            ShuffleAndDeal4Hands();
             waitForUser();
         }        
     }
