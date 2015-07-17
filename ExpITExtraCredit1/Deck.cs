@@ -10,7 +10,7 @@ namespace ExpITExtraCredit1
     {
         List<Card> cardsInDeck;
 
-        Random rnd = new Random();
+        static Random rnd = new Random();
 
         public Deck()
         {
